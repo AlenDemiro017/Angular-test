@@ -24,7 +24,7 @@ jobs:
     - name: Zip artifact
       uses: montudor/action-zip@v0.1.0
       with:
-        args: zip -qq -r artifact.zip ./dist/MyDreamApp
+        args: zip -qq -r -i artifact.zip ./dist/MyDreamApp
     - name: scp to GCP
       run: |
        echo "${{ secrets.KEY }}" > key.pem
@@ -32,7 +32,7 @@ jobs:
        scp -i key.pem -o StrictHostKeyChecking=no artifact.zip ${{ secrets.USERNAME }}@${{ secrets.HOST }}:~/.
     - name: unzip & remove artifact
       run: |
-        ssh -i key.pem -o StrictHostKeyChecking=no -T developer@${{ secrets.HOST }} << EOF
+        ssh -i key.pem -o StrictHostKeyChecking=no -T root@${{ secrets.HOST }} << EOF
         unzip artifact.zip &&
         rm artifact.zip &&
         rm -rf MyDreamApp &&
