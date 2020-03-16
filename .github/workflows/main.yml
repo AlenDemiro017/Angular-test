@@ -19,7 +19,7 @@ jobs:
         node-version: '10.x'
     - name: Run NPM Install
       run: npm install
-    - name: Build the project
+    - name: Build the project 2
       run: npm run build
     - name: Zip artifact
       uses: montudor/action-zip@v0.1.0
