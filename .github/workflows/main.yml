@@ -24,7 +24,7 @@ jobs:
     - name: Zip artifact
       uses: montudor/action-zip@v0.1.0
       with:
-        args: zip -qq -r -i artifact.zip ./dist/MyDreamApp
+        args: zip -qq -r artifact.zip ./dist/MyDreamApp
     - name: scp to GCP
       run: |
        echo "${{ secrets.KEY }}" > key.pem
