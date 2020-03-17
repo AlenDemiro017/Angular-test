@@ -6,7 +6,7 @@ on:
       -master
 
 
-      jobs:
+ jobs:
         build:
           runs on: self-hosted
 
