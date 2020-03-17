@@ -1,0 +1,28 @@
+name: build
+
+on:
+  push:
+    branches:
+      -master
+
+
+      jobs:
+        build:
+          runs on: self-hosted
+
+
+          steps:
+            - uses: actions/checkout@master
+            - name: Setup Node
+              uses: actions/setup-node@v1
+                node-version: '10.x'
+
+            - uses: install nginx
+            - run: apt update
+            - run: apt install nginx -y
+
+            - name: Run NPM Install
+              run: npm Install
+
+            - name: Build the project
+              run: npm run build
