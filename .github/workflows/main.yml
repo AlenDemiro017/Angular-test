@@ -3,26 +3,31 @@ name: build
 on:
   push:
     branches:
-      -master
+      - master
 
 
- jobs:
-        build:
-          runs on: self-hosted
+jobs:
+  build:
+    runs-on: self-hosted
 
+    steps:
+      - uses: actions/checkout@master
 
-          steps:
-            - uses: actions/checkout@master
-            - name: Setup Node
-              uses: actions/setup-node@v1
-                node-version: '10.x'
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        run: node-version: '10.x'
 
-            - uses: install nginx
-            - run: apt update
-            - run: apt install nginx -y
+      - uses: install nginx
 
-            - name: Run NPM Install
-              run: npm Install
+      - name: Update sources list
+        run: apt update
 
-            - name: Build the project
-              run: npm run build
+      - name: Install nginx
+        run: apt install nginx -y
+
+      - name: Run NPM Install
+        run: npm Install
+
+      - name: Build the project
+        run: npm run build
+
