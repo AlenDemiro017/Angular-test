@@ -18,7 +18,7 @@ jobs:
         with:
           node-version: '10.x'
 
-      - uses: install nginx
+      - uses: install nginx/var/www
 
       - name: Update sources list
         run: apt update
