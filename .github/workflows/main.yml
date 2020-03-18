@@ -15,7 +15,8 @@ jobs:
 
       - name: Setup Node
         uses: actions/setup-node@v1
-        run: node-version: '10.x'
+        with:
+          node-version: '10.x'
 
       - uses: install nginx
 
