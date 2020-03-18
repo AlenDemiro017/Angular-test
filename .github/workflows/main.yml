@@ -13,7 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          repository: 'AlenDemiro017'
+          ref: my-branch
 
       - name: Setup Node
         uses: actions/setup-node@v1
