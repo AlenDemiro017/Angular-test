@@ -8,10 +8,10 @@ on:
 
 jobs:
   build:
-
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, ubuntu-18.04]
 
     steps:
+<<<<<<< HEAD
     - uses: actions/checkout@master
     - name: Setup Node
       uses: actions/setup-node@v1
@@ -29,3 +29,20 @@ jobs:
        echo "${{ secrets.KEY }}" > key.pem
        chmod 400 key.pem
        scp -r -i key.pem -o StrictHostKeyChecking=no dist/** root@46.101.98.114:/var/www/site
+=======
+      - uses: actions/checkout@v2
+        with:
+          ref: my-branch
+
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: '10.x'
+
+      - name: Run NPM Install
+        run: npm Install
+
+      - name: Build the project
+        run: npm run build
+        
+>>>>>>> 56f28c79eb7664bf491089a9ebc31a49471acab2
