@@ -17,10 +17,13 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: '10.x'
+        
     - name: Run NPM Install
       run: npm install
+
     - name: Build the project
       run: npm run build
+
     - name: Copy files to remote server
       run: |
        echo "${{ secrets.KEY }}" > key.pem
